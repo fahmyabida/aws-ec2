@@ -1,4 +1,4 @@
-FROM golang:alpine as tempat-buildnya
+FROM golang:alpine
 
 RUN mkdir /app
 COPY . /app
@@ -6,8 +6,4 @@ WORKDIR /app
 
 RUN go build -o applikasiku .
 
-FROM alpine
-RUN mkdir /jadinya
-COPY --from=tempat-buildnya /app/applikasiku  /jadinya/applikasiku
-
-CMD ["./jadinya/applikasiku"]
+CMD ["./applikasiku"]
