@@ -1,8 +1,6 @@
 package repository
 
 import (
-	"regexp"
-
 	"github.com/DATA-DOG/go-sqlmock"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -39,10 +37,5 @@ func NewTestUnit() TestUnit {
 	tu.Mock = mock
 	iFaceUserRepo := NewUserRepo(dbGorm)
 	tu.IFaceUserRepo = iFaceUserRepo
-	tu.Mock.ExpectQuery(regexp.QuoteMeta(
-		"SELECT * FROM `users`")).
-		WillReturnRows(
-			sqlmock.NewRows([]string{"id", "username"}).
-				AddRow(1, "fahmy").AddRow(2, "abida"))
 	return tu
 }

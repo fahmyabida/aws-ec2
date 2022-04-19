@@ -4,8 +4,10 @@ import (
 	"belajar-go-echo/repository"
 	"net/http"
 	"net/http/httptest"
+	"regexp"
 	"testing"
 
+	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 )
@@ -24,6 +26,11 @@ func TestGetAllUser(t *testing.T) {
 	c.SetPath("/users")
 
 	ut := repository.NewTestUnit()
+	ut.Mock.ExpectQuery(regexp.QuoteMeta(
+		"SELECT * FROM `users`")).
+		WillReturnRows(
+			sqlmock.NewRows([]string{"id", "username"}).
+				AddRow(1, "fahmy").AddRow(2, "abida"))
 	userController := NewUserController(ut.IFaceUserRepo)
 
 	// // Assertions
