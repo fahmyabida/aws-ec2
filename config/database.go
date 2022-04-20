@@ -38,11 +38,11 @@ func MigrateDB(db *gorm.DB) error {
 	if err != nil {
 		return err
 	}
-	err = db.Create(model.User{
-		Username: "melati",
-		Password: "1234",
-		Name:     "melati",
-		Role:     "admin",
-	}).Error
+	// err = db.Create(model.User{
+	// 	Username: "melati",
+	// 	Password: "1234",
+	// 	Name:     "melati",
+	// 	Role:     "admin",
+	// }).Error
 	return err
 }
