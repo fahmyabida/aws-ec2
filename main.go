@@ -31,6 +31,6 @@ func main() {
 	app.GET("/users", userController.GetAllData, middleware.ValidateJwt())
 	app.GET("/user", userController.GetSingleData, middleware.ValidateJwt())
 	app.POST("/users", userController.Create, middleware.ValidateJwt())
-	fmt.Println("CODE BERUBAH")
+	fmt.Println("TRIGGER")
 	app.Start(":8080")
 }
