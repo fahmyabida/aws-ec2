@@ -20,7 +20,7 @@ func (Category) TableName() string {
 
 func ConnectDB() (*gorm.DB, error) {
 	// return gorm.Open(sqlite.Open("app.db"), &gorm.Config{})
-	connectionString := fmt.Sprintf("root:Admin123@tcp(db:3306)/mydb")
+	connectionString := fmt.Sprintf("admin:Admin123@tcp(database-mysql.cw5vouz1a62c.us-west-1.rds.amazonaws.com:3306)/mydb")
 
 	var err error
 	db, err := gorm.Open(mysql.Open(connectionString), &gorm.Config{
@@ -34,7 +34,15 @@ func ConnectDB() (*gorm.DB, error) {
 }
 
 func MigrateDB(db *gorm.DB) error {
-	return db.AutoMigrate(
-		model.User{},
-	)
+	err := db.AutoMigrate(model.User{})
+	if err != nil {
+		return err
+	}
+	err = db.Create(model.User{
+		Username: "melati",
+		Password: "1234",
+		Name:     "melati",
+		Role:     "admin",
+	}).Error
+	return err
 }
