@@ -5,6 +5,7 @@ import (
 	"belajar-go-echo/controller"
 	"belajar-go-echo/middleware"
 	"belajar-go-echo/repository"
+	"fmt"
 
 	"github.com/labstack/echo/v4"
 )
@@ -30,5 +31,6 @@ func main() {
 	app.GET("/users", userController.GetAllData, middleware.ValidateJwt())
 	app.GET("/user", userController.GetSingleData, middleware.ValidateJwt())
 	app.POST("/users", userController.Create, middleware.ValidateJwt())
+	fmt.Println("CODE BERUBAH")
 	app.Start(":8080")
 }
