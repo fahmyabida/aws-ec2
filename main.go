@@ -27,7 +27,7 @@ func main() {
 
 	app.GET("/ping", func(c echo.Context) error {
 		return c.JSON(200, map[string]interface{}{
-			"message": "pong sudah berubah",
+			"message": "pong back to normal",
 		})
 	})
 
