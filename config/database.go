@@ -19,7 +19,6 @@ func (Category) TableName() string {
 }
 
 func ConnectDB() (*gorm.DB, error) {
-	// return gorm.Open(sqlite.Open("app.db"), &gorm.Config{})
 	connectionString := fmt.Sprintf("admin:Admin123@tcp(database-mysql.cw5vouz1a62c.us-west-1.rds.amazonaws.com:3306)/mydb")
 
 	var err error
