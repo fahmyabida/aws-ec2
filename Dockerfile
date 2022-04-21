@@ -3,6 +3,7 @@ FROM golang:alpine as tempat-buildnya
 RUN mkdir /app
 COPY . /app
 WORKDIR /app
+RUN apk add git
 
 RUN go build -o applikasiku .
 
