@@ -25,6 +25,12 @@ func main() {
 
 	app := echo.New()
 
+	app.GET("/ping", func(c echo.Context) error {
+		return c.JSON(200, map[string]interface{}{
+			"message": "pong",
+		})
+	})
+
 	app.POST("/login", loginController.Login)
 
 	app.GET("/users", userController.GetAllData, middleware.ValidateJwt())
