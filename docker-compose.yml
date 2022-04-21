@@ -3,9 +3,8 @@ services:
   backend:
     build: .
     networks:
-      - network-for-backend
+      - host
     ports: 
       - "8080:8080"
 networks:
-  network-for-backend:
-    driver: host
+  host:
