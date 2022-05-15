@@ -8,7 +8,7 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
-// trigger build
+// trigger build 2
 type Category struct {
 	Id   string
 	Name string
