@@ -8,7 +8,7 @@ import (
 
 	"github.com/labstack/echo/v4"
 )
-
+// trigger
 func main() {
 	db, err := config.ConnectDB()
 	if err != nil {
